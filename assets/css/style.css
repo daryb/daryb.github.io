@@ -11962,6 +11962,12 @@ only screen and (max-width: 1919px) {
   height: 100%;
 }
 
+.awards-logo-center{
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+}
+
 
 /* portfolio page css */
 
