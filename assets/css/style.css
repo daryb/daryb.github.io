@@ -11968,6 +11968,12 @@ only screen and (max-width: 1919px) {
     align-items: center;     /* vertical */
 }
 
+p.disclaimer{
+    font-size: 12px;
+    color: #FFFFFF;
+    
+}
+
 
 /* portfolio page css */
 
