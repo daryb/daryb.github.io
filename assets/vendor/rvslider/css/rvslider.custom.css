@@ -1,0 +1,39 @@
+
+	.rvs-custom-highlight.rvs-container a.rvs-close:active,
+	.rvs-custom-highlight.rvs-container a.rvs-close:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-close:hover,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:active,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:hover,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:active,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:hover,
+	.rvs-custom-highlight.rvs-thumb-play .rvs-nav-container span.rvs-nav-item-thumb:hover:before {
+		background-color: #ffffff;
+	}
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:active,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:hover,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:active,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:hover,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:first-child,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:first-child:active,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:first-child:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-nav-item.rvs-active:first-child:hover {
+		border-color: #ffffff;
+	}
+	.rvs-custom-highlight.rvs-container a.rvs-close:active,
+	.rvs-custom-highlight.rvs-container a.rvs-close:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-close:hover,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:active,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:focus,
+	.rvs-custom-highlight.rvs-container a.rvs-play-video:hover,
+	.rvs-custom-highlight .rvs-active .rvs-nav-item-title {
+		color: #000000;
+	}
+	.rvs-custom-highlight .rvs-active .rvs-nav-item-credits {
+		color: #767676;
+	}
