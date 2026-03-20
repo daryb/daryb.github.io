@@ -54,6 +54,36 @@
     margin-top: 10px;
     padding: 8px 12px;
   }
+
+   .delivery-item {
+    margin-top: 10px;
+  }
+
+  #add-review {
+    margin-top: 10px;
+    padding: 6px 10px;
+  }
+
+  .remove-btn {
+    margin-bottom: 5px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .datetime-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+  }
+
+  .datetime-row input {
+    flex: 1;
+  }
+
+  .datetime-row select {
+    width: 80px;
+  }
 </style>
 </head>
 <body>
@@ -69,24 +99,26 @@
 </label>
 
 <label>Project
-  <input type="email" placeholder="Project Title">
+  <input type="email" placeholder="Example: Year End Sales Event">
 </label>
 
 <label>Job Code
   <input type="email" placeholder="OMPS-TBD">
 </label>
-
+<br>
+<br>
+<br>  
 <h3>Spot(s)</h3>
 
 <div id="spots-container">
   <div class="spot-item">
     
     <label>Spot Length (seconds)
-      <input type="number" placeholder="e.g. 60">
+      <input type="number" placeholder="Example: 60">
     </label>
 
     <label>Associated Cutdowns (comma separated)
-      <input type="text" placeholder="e.g. 30, 15, 6">
+      <input type="text" placeholder="Example: 30, 15, 6">
     </label>
 
     <div class="checkbox-group">
@@ -101,10 +133,10 @@
   </label>
 
   <label class="checkbox-item">
-    <input type="checkbox" data-toggle="other-spec-options"> Other
+    <input type="checkbox" class="toggle-local"> Other
   </label>
 
-  <div id="other-spec-options" class="sub-options hidden">
+  <div class="sub-options hidden">
     <label>Specify Other
       <input type="text" placeholder="Enter details">
     </label>
@@ -116,12 +148,11 @@
 
 <button type="button" id="add-spot">+ Add Another Spot</button>
 
-
+<br>
+<br>
+<br>
 
 <h3>Project Details</h3>
-<label>Prep Files Received:
-  <input type="date" name="2026-XX-XX">
-</label>
 
 <label>Project will include:</label>
 
@@ -143,8 +174,18 @@
 <div id="recording-options" class="sub-options hidden">
 
   <label>Ideal Recording Session Date
-    <input type="date" name="recording_date">
+    <div class="datetime-row">
+  <input type="datetime-local">
+  <select class="timezone">
+    <option value="PT">Pacific (PT)</option>
+    <option value="MT">Mountain (MT)</option>
+    <option value="CT">Central (CT)</option>
+    <option value="ET">Eastern (ET)</option>
+  </select>
+</div>
   </label>
+
+  
 
   <label>Talent Name
     <input type="text" placeholder="Enter talent name">
@@ -165,6 +206,7 @@
   <label>Voice Director
     <input type="text" placeholder="Enter director name">
   </label>
+  <p style="margin-top: 5px; line-height: 1.4; font-size: small;">Our team has extensive experience working with voice talent, the flow of recording sessions, and relaying feedback. Please let us know if you'd like someone from our team to act as the voice director for your session.</p>
 
   <label>In-Session Picture Review Required?
   <select id="vo-evercast">
@@ -240,17 +282,17 @@
 
   <label class="checkbox-item">
     <input type="checkbox" data-toggle="temp-sfx">
-    Temp supplied w/ New SFX required - Editor SFX are placeholders for the creative intent but need replacement
+    Temp SFX Supplied - Editor SFX are placeholders for the creative intent but need replacement
   </label>
 
   <label class="checkbox-item">
     <input type="checkbox" data-toggle="new-sfx-options">
-    New SFX required
+    New SFX Required
   </label>
 
   <div id="new-sfx-options" class="sub-options hidden">
     
-    <label>SFX Creative Notes (Example: Only cover the larger motion transitions, the rest of the animations don't need anything.)
+    <label>SFX Creative Notes<br><p style="margin-top: 5px; line-height: 1.4; font-size: small;">(Example: Only cover the larger motion transitions, the rest of the animations don't need anything.)</p>
       <textarea rows="3" placeholder="Enter SFX notes"></textarea>
     </label>
 
@@ -259,17 +301,19 @@
 </div>
 
 </div>
-
-<h3>Mix Review</h3>
+<br>
+<br>
+<br>
+<h3>Mix Reviews</h3>
 
 <p style="margin-top: 5px; line-height: 1.4; font-size: small;">
   There are two review approaches:
   <br><br>
-  <strong>Unsupervised Mix Review</strong> - The engineer delivers files for review. 
-  Creative/client provides feedback asynchronously (e.g., via Frame.io).
+  <strong>Unsupervised Mix Reviews</strong> - The engineer delivers files for review. 
+  Creative/client provides feedback asynchronously via Frame.io.
   <br><br>
-  <strong>Supervised Mix Review</strong> - A live review session where creative/client 
-  attends via video stream and provides real-time feedback to the mixer (e.g., Evercast). 
+  <strong>Supervised Mix Reviews</strong> - A live review session where creative/client 
+  attends via video stream and provides real-time feedback to the mixer via Evercast. 
   This does not replace the initial mix pass, but changes how review is conducted.
 </p>
 
@@ -280,29 +324,65 @@
     <option value="supervised">Supervised Mix Review</option>
   </select>
 </label>
+<br>
+<br>
+<br>
+<h3>Timeline</h3>
 
-<div id="unsupervised-options" class="sub-options hidden">
-  <label>When is the team ideally receiving the first outputs for review?
-    <input type="datetime-local">
-  </label>
-</div>
+<div id="delivery-container">
 
-<div id="supervised-options" class="sub-options hidden">
-  <label>Ideal Review Session Date & Time
-    <input type="datetime-local">
-  </label>
-</div>
-
-<h3>Delivery</h3>
-
-<label>Project Delivery Deadline
-  <input type="datetime-local" id="delivery-deadline">
-</label>
-
-<p style="margin-top: 5px; line-height: 1.4; font-size: small;">
-  This is not the deadline for receiving a mix to review. 
-  This represents the final ship date of the project.
+  <p style="margin-top: 5px; line-height: 1.4; font-size: small;">
+We will do our best to accomodate your ideal timelines based on engineer availability.
 </p>
+
+  <div class="delivery-item">
+    <label>Prep Files Received</label>
+<div class="datetime-row">
+  <input type="datetime-local">
+  <select class="timezone">
+    <option value="PT">Pacific (PT)</option>
+    <option value="MT">Mountain (MT)</option>
+    <option value="CT">Central (CT)</option>
+    <option value="ET">Eastern (ET)</option>
+  </select>
+</div>
+  </div>
+
+  <div class="delivery-item">
+    <label>Mix Review</label>
+<div class="datetime-row">
+  <input type="datetime-local">
+  <select class="timezone">
+    <option value="PT">Pacific (PT)</option>
+    <option value="MT">Mountain (MT)</option>
+    <option value="CT">Central (CT)</option>
+    <option value="ET">Eastern (ET)</option>
+  </select>
+</div>
+  </div>
+
+  <div id="additional-reviews"></div>
+
+  <button type="button" id="add-review">+ Add Additional Mix Review Cycles</button>
+
+    <div class="delivery-item">
+    <label>Final Mixes Delivered</label>
+<div class="datetime-row">
+  <input type="datetime-local">
+  <select class="timezone">
+    <option value="PT">Pacific (PT)</option>
+    <option value="MT">Mountain (MT)</option>
+    <option value="CT">Central (CT)</option>
+    <option value="ET">Eastern (ET)</option>
+  </select>
+</div>
+  </div>
+
+</div>
+
+<br>
+<br>
+<br>
 
 <h3>Anything Else?</h3>
 
@@ -388,34 +468,43 @@
     newSpot.classList.add('spot-item');
 
     newSpot.innerHTML = `
+      <button type="button" class="remove-btn">Remove</button>
+
       <label>Spot Length (seconds)
-      <input type="number" placeholder="e.g. 60">
-    </label>
+        <input type="number" placeholder="e.g. 60">
+      </label>
 
-    <label>Associated Cutdowns (comma separated)
-      <input type="text" placeholder="e.g. 30, 15, 6">
-    </label>
+      <label>Associated Cutdowns (comma separated)
+        <input type="text" placeholder="e.g. 30, 15, 6">
+      </label>
 
-    <div class="checkbox-group">
-  <label>Deliverable Spec</label>
+      <div class="checkbox-group">
+        <label>Deliverable Spec</label>
 
-  <label class="checkbox-item">
-    <input type="checkbox"> Web / Social / Digital
+        <label class="checkbox-item">
+          <input type="checkbox"> Web / Social / Digital
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox"> Broadcast / TV
+        </label>
+
+        <label class="checkbox-item">
+  <input type="checkbox" class="toggle-local"> Other
+</label>
+
+<div class="sub-options hidden">
+  <label>Specify Other
+    <input type="text" placeholder="Enter details">
   </label>
-
-  <label class="checkbox-item">
-    <input type="checkbox"> Broadcast / TV
-  </label>
-
-  <label class="checkbox-item">
-    <input type="checkbox" data-toggle="other-spec-options"> Other
-  </label>
-
-  <div id="other-spec-options" class="sub-options hidden">
-    <label>Specify Other
-      <input type="text" placeholder="Enter details">
-    </label>
+</div>
+      </div>
     `;
+
+    // Remove handler
+    newSpot.querySelector('.remove-btn').addEventListener('click', () => {
+      newSpot.remove();
+    });
 
     container.appendChild(newSpot);
   });
@@ -440,6 +529,20 @@
 </script>
 
 <script>
+  document.addEventListener('change', (e) => {
+    if (!e.target.matches('.toggle-local')) return;
+
+    const checkbox = e.target;
+    const parent = checkbox.closest('.checkbox-item') || checkbox.parentElement;
+    const container = parent.nextElementSibling;
+
+    if (!container) return;
+
+    container.classList.toggle('hidden', !checkbox.checked);
+  });
+</script>
+
+<script>
   const mixReviewSelect = document.getElementById('mix-review-type');
   const unsupervised = document.getElementById('unsupervised-options');
   const supervised = document.getElementById('supervised-options');
@@ -453,6 +556,42 @@
 
   mixReviewSelect.addEventListener('change', updateMixReview);
   updateMixReview(); // run on load
+</script>
+
+<script>
+  const addReviewBtn = document.getElementById('add-review');
+  const reviewContainer = document.getElementById('additional-reviews');
+
+  let reviewCount = 1;
+
+  addReviewBtn.addEventListener('click', () => {
+    reviewCount++;
+
+    const newReview = document.createElement('div');
+    newReview.classList.add('delivery-item');
+
+    newReview.innerHTML = `
+  
+
+  <label>Additional Mix Review ${reviewCount}<button type="button" class="remove-btn">Remove</button></label>
+  <div class="datetime-row">
+    <input type="datetime-local">
+    <select class="timezone">
+      <option value="PT">Pacific (PT)</option>
+    <option value="MT">Mountain (MT)</option>
+    <option value="CT">Central (CT)</option>
+    <option value="ET">Eastern (ET)</option>
+    </select>
+  </div>
+`;
+
+    // Attach remove handler
+    newReview.querySelector('.remove-btn').addEventListener('click', () => {
+      newReview.remove();
+    });
+
+    reviewContainer.appendChild(newReview);
+  });
 </script>
 
 </body>
