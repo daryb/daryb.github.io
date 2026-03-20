@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intake Form</title>
+  <style>
+  body { font-family: Arial; max-width: 600px; margin: 40px auto; }
+
+  label { display: block; margin-top: 15px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+
+  .checkbox-group {
+    margin-top: 10px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .checkbox-item input {
+    width: auto;
+    margin: 0 10px 0 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .sub-options {
+    margin-left: 25px;
+    margin-top: 8px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+  }
+
+  .spot-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 8px 12px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Audio Intake</h2>
+
+<label>End Client
+  <input type="text" placeholder="Example: BMW">
+</label>
+
+<label>Agency
+  <input type="text" placeholder="Example: BBDO">
+</label>
+
+<label>Project
+  <input type="email" placeholder="Project Title">
+</label>
+
+<label>Job Code
+  <input type="email" placeholder="OMPS-TBD">
+</label>
+
+<h3>Spot(s)</h3>
+
+<div id="spots-container">
+  <div class="spot-item">
+    
+    <label>Spot Length (seconds)
+      <input type="number" placeholder="e.g. 60">
+    </label>
+
+    <label>Associated Cutdowns (comma separated)
+      <input type="text" placeholder="e.g. 30, 15, 6">
+    </label>
+
+    <div class="checkbox-group">
+  <label>Deliverable Spec</label>
+
+  <label class="checkbox-item">
+    <input type="checkbox"> Web / Social / Digital
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox"> Broadcast / TV
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox" data-toggle="other-spec-options"> Other
+  </label>
+
+  <div id="other-spec-options" class="sub-options hidden">
+    <label>Specify Other
+      <input type="text" placeholder="Enter details">
+    </label>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<button type="button" id="add-spot">+ Add Another Spot</button>
+
+
+
+<h3>Project Details</h3>
+<label>Prep Files Received:
+  <input type="date" name="2026-XX-XX">
+</label>
+
+<label>Project will include:</label>
+
+<div class="checkbox-group">
+
+ <label class="checkbox-item">
+  <input type="checkbox" id="vo-checkbox" data-toggle="vo-options"> Voice Over (VO)
+</label>
+
+<div id="vo-options" class="sub-options hidden">
+  <label class="checkbox-item">
+    <input type="checkbox" id="vo-audiosupplied"> VO Audio Files Supplied
+  </label>
+  <label class="checkbox-item">
+  <input type="checkbox" data-toggle="recording-options">
+  Recording Session Required
+</label>
+
+<div id="recording-options" class="sub-options hidden">
+
+  <label>Ideal Recording Session Date
+    <input type="date" name="recording_date">
+  </label>
+
+  <label>Talent Name
+    <input type="text" placeholder="Enter talent name">
+  </label>
+
+  <label>Source Connect ID
+    <input type="text" placeholder="Enter Source Connect ID">
+  </label>
+
+  <label>Source Connect Version
+    <select>
+      <option value="">Select version</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </label>
+
+  <label>Voice Director
+    <input type="text" placeholder="Enter director name">
+  </label>
+
+  <label>In-Session Picture Review Required?
+  <select id="vo-evercast">
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+</label>
+
+</div>
+  <label class="checkbox-item">
+    <input type="checkbox"> Synthetic
+  </label>
+</div>
+
+  <label class="checkbox-item">
+    <input type="checkbox" id="dx-checkbox"> Dialogue (DX)
+  </label>
+
+<label class="checkbox-item">
+  <input type="checkbox" data-toggle="music-options"> Music (MX)
+</label>
+
+<div id="music-options" class="sub-options hidden">
+
+  <label class="checkbox-item">
+    <input type="checkbox"> Custom Composition
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox"> Stock Music - Being Supplied
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox" data-toggle="stock-sourcing-options">
+    Stock Music - Needs Sourcing
+  </label>
+
+  <div id="stock-sourcing-options" class="sub-options hidden">
+    
+    <label>Budget
+      <input type="text" placeholder="Enter budget">
+    </label>
+
+    <label>Media Buy Details
+      <input type="text" placeholder="Enter media buy details">
+    </label>
+
+    <label>References or Creative Notes
+      <textarea rows="3" placeholder="Enter references or notes"></textarea>
+    </label>
+
+  </div>
+
+</div>
+
+
+<label class="checkbox-item">
+  <input type="checkbox" data-toggle="sfx-options"> Sound Effects (SFX)
+</label>
+
+<div id="sfx-options" class="sub-options hidden">
+
+  <label class="checkbox-item">
+    <input type="checkbox">
+    Supplied - SFX stems from older version of spot(s)
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox">
+    Supplied - Editor SFX are approved
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox" data-toggle="temp-sfx">
+    Temp supplied w/ New SFX required - Editor SFX are placeholders for the creative intent but need replacement
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox" data-toggle="new-sfx-options">
+    New SFX required
+  </label>
+
+  <div id="new-sfx-options" class="sub-options hidden">
+    
+    <label>SFX Creative Note(s)
+      <textarea rows="3" placeholder="Enter SFX notes"></textarea>
+    </label>
+
+  </div>
+
+</div>
+
+</div>
+
+<h3>Mix Review</h3>
+
+<p style="margin-top: 5px; line-height: 1.4; font-size: small;">
+  There are two review approaches:
+  <br><br>
+  <strong>Unsupervised Mix Review</strong> - The engineer delivers files for review. 
+  Creative/client provides feedback asynchronously (e.g., via Frame.io).
+  <br><br>
+  <strong>Supervised Mix Review</strong> - A live review session where creative/client 
+  attends via video stream and provides real-time feedback to the mixer (e.g., Evercast). 
+  This does not replace the initial mix pass, but changes how review is conducted.
+</p>
+
+<label>Mix Review Type
+  <select id="mix-review-type" data-toggle-select>
+    <option value="">Select option</option>
+    <option value="unsupervised">Unsupervised Mix Review</option>
+    <option value="supervised">Supervised Mix Review</option>
+  </select>
+</label>
+
+<div id="unsupervised-options" class="sub-options hidden">
+  <label>When is the team ideally receiving the first outputs for review?
+    <input type="datetime-local">
+  </label>
+</div>
+
+<div id="supervised-options" class="sub-options hidden">
+  <label>Ideal Review Session Date & Time
+    <input type="datetime-local">
+  </label>
+</div>
+
+<h3>Delivery</h3>
+
+<label>Project Delivery Deadline
+  <input type="datetime-local" id="delivery-deadline">
+</label>
+
+<p style="margin-top: 5px; line-height: 1.4; font-size: small;">
+  This is not the deadline for receiving a mix to review. 
+  This represents the final ship date of the project.
+</p>
+
+<h3>Anything Else?</h3>
+
+<label>Additional Notes
+  <textarea rows="4"></textarea>
+</label>
+
+<h3>Prep Files Required:</h3>
+<ul id="prep-files-list"></ul>
+
+
+<script>
+  document.querySelectorAll('input[type="checkbox"][data-toggle]')
+    .forEach(checkbox => {
+      const target = document.getElementById(checkbox.dataset.toggle);
+      if (!target) return;
+
+      const update = () => {
+        target.classList.toggle('hidden', !checkbox.checked);
+      };
+
+      checkbox.addEventListener('change', update);
+      update(); // run once on load
+    });
+</script>
+
+<script>
+  const prepList = document.getElementById('prep-files-list');
+  const voCheckbox = document.getElementById('vo-checkbox');
+  const voAudioSupplied = document.getElementById('vo-audiosupplied');
+  const voEvercast = document.getElementById('vo-evercast');
+  const dxCheckbox = document.getElementById('dx-checkbox');
+
+
+  function updatePrepFiles() {
+    // Clear list
+    prepList.innerHTML = '';
+
+    // Add items conditionally
+    if (voCheckbox.checked) {
+      const li = document.createElement('li');
+      li.textContent = 'Script(s)';
+      prepList.appendChild(li);
+    }
+
+    if (voAudioSupplied.checked) {
+      const li = document.createElement('li');
+      li.textContent = 'VO Audio Files => Raw VO audio files with noted selects, or an AAF (via editor)';
+      prepList.appendChild(li);
+    }
+
+    if (voEvercast.value === 'yes') {
+  const li = document.createElement('li');
+  li.textContent = 'Picture(s) for use in the VO recording session';
+  prepList.appendChild(li);
+}
+    if (dxCheckbox.checked) {
+      const li = document.createElement('li');
+      li.textContent = 'AAF (via editor) with 120 frame handles.';
+      prepList.appendChild(li);
+    }
+
+
+
+  }
+
+  // Listen for changes
+  voCheckbox.addEventListener('change', updatePrepFiles);
+  voAudioSupplied.addEventListener('change', updatePrepFiles);
+  voEvercast.addEventListener('change', updatePrepFiles);
+  dxCheckbox.addEventListener('change', updatePrepFiles);
+
+  // Run once on load
+  updatePrepFiles();
+</script>
+
+<script>
+  const addSpotBtn = document.getElementById('add-spot');
+  const container = document.getElementById('spots-container');
+
+  addSpotBtn.addEventListener('click', () => {
+    const newSpot = document.createElement('div');
+    newSpot.classList.add('spot-item');
+
+    newSpot.innerHTML = `
+      <label>Spot Length (seconds)
+      <input type="number" placeholder="e.g. 60">
+    </label>
+
+    <label>Associated Cutdowns (comma separated)
+      <input type="text" placeholder="e.g. 30, 15, 6">
+    </label>
+
+    <div class="checkbox-group">
+  <label>Deliverable Spec</label>
+
+  <label class="checkbox-item">
+    <input type="checkbox"> Web / Social / Digital
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox"> Broadcast / TV
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox" data-toggle="other-spec-options"> Other
+  </label>
+
+  <div id="other-spec-options" class="sub-options hidden">
+    <label>Specify Other
+      <input type="text" placeholder="Enter details">
+    </label>
+    `;
+
+    container.appendChild(newSpot);
+  });
+</script>
+
+<script>
+  document.querySelectorAll('[data-toggle]').forEach(el => {
+    const target = document.getElementById(el.dataset.toggle);
+    if (!target) return;
+
+    const update = () => {
+      if (el.tagName === 'SELECT') {
+        target.classList.toggle('hidden', el.value !== 'supervised');
+      } else {
+        target.classList.toggle('hidden', !el.checked);
+      }
+    };
+
+    el.addEventListener('change', update);
+    update();
+  });
+</script>
+
+<script>
+  const mixReviewSelect = document.getElementById('mix-review-type');
+  const unsupervised = document.getElementById('unsupervised-options');
+  const supervised = document.getElementById('supervised-options');
+
+  function updateMixReview() {
+    const value = mixReviewSelect.value;
+
+    unsupervised.classList.toggle('hidden', value !== 'unsupervised');
+    supervised.classList.toggle('hidden', value !== 'supervised');
+  }
+
+  mixReviewSelect.addEventListener('change', updateMixReview);
+  updateMixReview(); // run on load
+</script>
+
+</body>
+</html>
